@@ -3,14 +3,16 @@
 #------------------------------------------------------------------------------------------------------------
 # /!\ README /!\
 #Ce document est un rassemblage des test unitaires remaniés afin de permettre la pouruite des
-#tes sans avoir d'interruption en cas d'erreur. Un message de compte-rendu sera affiché à la fin du test pour
-#indiquer lequel des tests unitaires doit être repassé séparément. Ne lancez pas ce script deux fois, 
+#tests sans avoir d'interruption en cas d'erreur. Un message de compte-rendu sera affiché à la fin du test pour
+#indiquer lequel ou lesquels des tests unitaires doivent être repassés séparément. Ne lancez pas ce script deux fois, 
 #cela serait inutile.
 #------------------------------------------------------------------------------------------------------------
 
 
 #----------------------------------------
 #----------Début du test sur les services
+
+echo "Début du test sur les services..."
 
 # Liste des services à vérifier
 services=("apache2" "named" "sshd" "postfix" "dovecot" "chronyd")
@@ -32,12 +34,16 @@ for svc in "${services[@]}"; do
     fi
 done
 
+echo "Test sur les services terminé."
+
 #----------Fin du test sur les services
 #--------------------------------------
 
 
 #----------------------------------
 #----------Début du test sur le DNS
+
+echo "Début du test sur le DNS..."
 
 errors_dns=()
 
@@ -51,12 +57,16 @@ if ! dig @127.0.0.1 google.com +short | grep -qE "^(1.1.1.1|8.8.8.8)"; then
     errors_dns+=("Les requêtes externes ne semblent pas être redirigées vers 1.1.1.1 ou 8.8.8.8.")
 fi
 
+echo "Test sur le DNS terminé."
+
 #----------Fin du test sur le DNS
 #--------------------------------
 
 
 #----------------------------------
 #----------Début du test sur le web
+
+echo "Début du test sur le serveur web..."
 
 errors_web=()
 
@@ -75,12 +85,16 @@ if ! curl -s --head http://192.168.0.2 | grep -q "200 OK"; then
     errors_web+=("Le serveur web ne répond pas correctement (pas de réponse http 200).")
 fi
 
+echo "Test sur le serveur web terminé."
+
 #----------Fin du test sur le web
 #--------------------------------
 
 
 #-------------------------------------
 #----------Début du test sur les mails
+
+echo "Début du test sur les mails..."
 
 errors_mail=()
 
@@ -108,12 +122,16 @@ if ! mail -H | grep -q "Test mail" && ! doveadmn fetch -u root mailbox INBOX | g
     errors_mail+=("L'envoi ou la réception de mail ne fonctionne pas correctement.")
 fi
 
+echo "Test sur les mails terminé."
+
 #----------Fin du test sur les mails
 #-----------------------------------
 
 
 #------------------------------------
 #----------Début du test sur le temps
+
+echo "Début du test sur le temps..."
 
 errors_tmp=()
 
@@ -138,6 +156,8 @@ if ! ntpq -p 127.0.0.1 &>/dev/null; then
     errors_tmp+=("Le serveur NTP ne répond pas aux requêtes.")
 fi
 
+echo "Test sur le temps terminé."
+
 #----------Fin du tests sur le temps
 #-----------------------------------
 
@@ -147,6 +167,7 @@ fi
 #-------------------------------
 #----------Début du compte-rendu
 
+echo "Lancement du compte-rendu."
 
 #Définition du code couleur
 GREEN="\033[32m"
@@ -223,6 +244,9 @@ fi
 #----------Fin du compte-rendu sur le temps
 #------------------------------------------
 
+echo "Compte-rendu terminé."
+
+echo "Le master-test terminé. Veuillez vous référer au test unitaire adéquat."
 
 #----------Fin du compte-rendu
 #-----------------------------
