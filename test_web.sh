@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Début du test sur le serveur web."
+
 #Commencer par définir les couleurs pour le message compte-rendu
 GREEN="\033[32m"
 RED="\033[31m"
@@ -31,3 +33,5 @@ else
         echo -e "${RED}- $err${RESET}"
     done
 fi
+
+echo "Test sur le serveur web terminé."
