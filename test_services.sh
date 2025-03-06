@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Début du test sur l'installation des services..."
+
 # Liste des services à vérifier
 services=("apache2" "named" "sshd" "postfix" "dovecot" "chronyd")
 packages=("apache2" "apache-mod_ssl" "btop" "openssh" "wireshark-qt" "nmap" "nfs-kernel-utils" "nfs-utils" "nfs-client" "bind" "bind-utils" "chrony" "postfix" "dovecot")
@@ -34,3 +36,5 @@ else
         echo -e "${RED}- $err${RESET}"
     done
 fi
+
+echo "Test sur l'installation des services terminé."
