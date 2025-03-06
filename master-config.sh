@@ -148,7 +148,7 @@ echo "Serveur web configuré."
 #--------------------------------------------------------------
 #----------------------------------------Début du serveur temps
 
-echo "Configuration du serveur temps..."
+echo "Configuration du serveur NTP..."
 
 sudo tee /etc/chrony.conf > /dev/null <<EOF
 server 0.pool.ntp.org iburst
@@ -160,7 +160,7 @@ EOF
 
 systemctl restart chronyd
 
-echo "Serveur temps configuré."
+echo "Serveur NTP configuré."
 
 #------------------------------------------Fin du serveur temps
 #--------------------------------------------------------------
@@ -259,7 +259,7 @@ sudo tee -a /var/spool/cron/crontabs/root > /dev/null <<EOF
 
 EOF
 
-echo "Backup configurée."
+echo "Serveur NFS configuré."
 
 #--------------------------------------Fin du serveur de backup
 #--------------------------------------------------------------
