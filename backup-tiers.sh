@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Ceci est le script de config qui servira au second serveur, celui qui
+#est censé accueillir les backups et les compresser.
+
 echo "Début de la configuration des backups sur le serveur tiers."
 
 # Configuration du serveur de sauvegarde
