@@ -22,9 +22,9 @@ The script of the second server to store and compress the files and directories 
 
 The test files are also separated in the same two categories as the config files.
 
-*/!\ It is highly recommended to use the master-test only once before going to the other units-test, in order to target the problems you could encounter.
+*`/!\` It is highly recommended to use the master-test only once before going to the other units-test, in order to target the problems you could encounter.
 By exemple, if you only have a problem with the mail part, do not run the master-script again after fixing the issue, use the mail test to check if it works well.
-Also, the units-test are more precise because of their separation with the rest of the parts. /!\*
+Also, the units-test are more precise because of their separation with the rest of the parts. `/!\`*
 
 ---
 If you have any question, please contact me at r4in@duck.com.
