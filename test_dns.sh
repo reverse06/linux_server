@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Début du test sur le DNS..."
+
 #Couleurs pour l'affichage des résultats
 GREEN="\033[32m"
 RED="\033[31m"
@@ -26,3 +28,5 @@ else
         echo -e "{RED}- $err${RESET}"
     done
 fi
+
+echo "Test sur le DNS terminé."
